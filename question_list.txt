@@ -1,0 +1,1 @@
+1. List top 20 column names associated with UPB. Please include table that the columns originally belongs to. Dont use DSET ID in lieu of table . Include duplicates and look across all tables in the knowledgebase
