@@ -1,0 +1,10 @@
+Glossary ID,Name,Definition,Business Segment
+989705190,Fannie Mae Loan Identifier,A unique identifier assigned by Fannie Mae which is associated with a loan secured by a property.,Loan Delivery
+989705278,Legal Entity Full Name,"The full, unparsed, name of a Party or Borrower, when either is identified as a Legal Entity.",Loan Delivery
+989705300,Loan Actual UPB Amount,The dollar amount of the Unpaid Principal Balance of the loan at any given time period.,Loan Delivery
+989724187,Loan Current Interest Rate Percent,The current interest rate of the mortgage loan.,Multi Family Segment
+989705631,Loan Origination Date,The date the loan was originated.,Loan Delivery
+989726098,Party Communication Channel Type,A code indicating the mode of communication with the party,Multi Family Segment
+989707353,Property Occupancy Status Type,A code indicating the occupancy status of the subject property.,Credit & Collateral Risk
+989706017,Property Standardized Address State Code,"The reformatted (standardized/scrubbed) two-character postal abbreviation code that uniquely identifies a state within the United States of America, the US territories or Canadian Provinces.",Loan Delivery
+989708379,Property Type,"A code indicating the category of the subject property, related to its risk in the score card weighting; such as Manufactured Home.",Loan Delivery

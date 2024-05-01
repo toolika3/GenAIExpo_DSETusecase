@@ -1,0 +1,32 @@
+Business Concept,Business Concept Identifier,Business Concept Definition
+ADDRESS,BC_000_000025,"Address is based upon USPS publication 28. Publication 28 has two sections, format of an address on a piece of mail and data points that MAY compose an address. The data point children of ADDRESS are the union components of an address on a piece of mail or a package."
+ASSET,BC_000_000078,Descriptive information about an non real estate asset.
+ASSET_HOLDER,BC_000_000082,Address and contact information for the entity that maintains stewardship or ownership of an asset.
+AUTOMATED_UNDERWRITING_SYSTEM,BC_000_000114,Information to support an Automated Underwriting (AUS) request and response.
+AUTOMATED_UNDERWRITING_SYSTEM_RESPONSE,BC_000_000116,Information about the response or result for a computer generated loan decision.
+CLOSING_INFORMATION,BC_000_000198,Information about the process to transfer of the legal title from the seller to the buyer.
+CLOSING_INSTRUCTION,BC_000_000202,Information related to the transfer of the legal title from the seller to the buyer.
+CLOSING_INSTRUCTION_DETAIL,BC_000_000203,Detailed information related to the transfer of the legal title from the seller to the buyer.
+COLLATERAL,BC_000_000214,An instance of assets that will be used as collateral for the loans of this deal or the collateral that has been used for collateral in this deal.
+CREDIT,BC_000_000289,Information related to the collection of account payment information of consumers.
+CREDIT_FILE,BC_000_000303,"Provides identifying data for each credit file returned from a credit data repository. This identifying data can be used to verify that the credit file returned belongs to the borrower that is the subject of the credit request. It also provides additional data about the borrower that is on file with the repository, such as employment data, current/previous addresses and alias/AKA names."
+CREDIT_RESPONSE,BC_000_000343,Contains the credit report data for a borrower or a pair of borrowers.
+IMPROVEMENT,BC_000_000708,"Information regarding the structure including details about the interior, exterior, systems, and features of the property. An improvement is any addition to raw land such as buildings and site improvements."
+INSPECTION_SERVICE,BC_000_000727,The information necessary to request and receive an inspection of a property.
+INSPECTION_SERVICE_RESPONSE,BC_000_000730,Data specific to the response for an inspection of a property.
+LOAN,BC_000_000816,Information specific to a mortgage loan agreement between one or more borrowers and a mortgage lender.
+LOAN_DETAIL,BC_000_000820,A collection of detailed loan information.
+LOAN_IDENTIFIER,BC_000_000821,The information used to identify this loan by various parties to the transaction or other organizations.
+LOAN_ORIGINATOR,BC_000_000829,Information regarding the Loan Originator and its channel.
+NAME,BC_000_000924,Parent container for name that allows for choice group between parsed and unparsed containers.
+PARTY,BC_000_000988,A collection of information about a single party to a transaction. Included direct participants like the borrower and seller as well as indirect participants such as the flood certificate provider.
+PROPERTY,BC_000_001090,"Information specific to a real estate in terms of land structure, location and market."
+PROPERTY_UNIT,BC_000_001126,Information about a given unit of housing.
+PROPERTY_UNIT_DETAIL,BC_000_001128,"Information about various aspects of the property unit, including number of floors, bedrooms, bathrooms, square footage and cooperative information."
+ROLE,BC_000_001232,Information about various capacities of parties involved in the transaction.
+SERVICE,BC_000_001269,"A collection of details related to a fulfillment service or product in terms of request, process and result."
+SERVICING,BC_000_001292,Loan level information on the servicing of the loan.
+SERVICING_DETAIL,BC_000_001295,Information that describes current status and activity related to servicing the loan.
+SUBJECT_PROPERTY,BC_000_001369,Represents a real estate asset being financed or refinanced.
+TERMS_OF_LOAN,BC_000_001410,"Describes characteristics of the loan, including the behavior defined in the financial instrument."
+,,
