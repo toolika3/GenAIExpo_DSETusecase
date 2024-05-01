@@ -1,1 +1,12 @@
-1. List top 20 column names associated with UPB. Please include table that the columns originally belongs to. Dont use DSET ID in lieu of table . Include duplicates and look across all tables in the knowledgebase
+# Expo Questions
+1. Do you have tables associated to fannie loan performance. List the table name and DSETID.Use bullets
+2. List all attributes associated with UPB for the above table.What is the primary difference between each one of them
+3. Give me the complete metadata and profiling information on curr_upb for the DSET_ID listed above
+4. Can you futher interpret the Domain taxanonomy based on business segment from above
+5. what does cardinality,selectivity and density values telling me in the above response
+6. Get me the metadata information on channel attribute of fan_loan_perf table.
+7. Also include the frequency percent for each category and display the result in tabular format
+
+
+
+

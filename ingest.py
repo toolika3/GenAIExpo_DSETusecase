@@ -37,12 +37,15 @@ def create_vector_db():
             #is_separator_regex=False
             )
     chunks = text_splitter.transform_documents(data)  # chunked data ready to be vector embedded for storage
-    #print(docs_as_str[0])
+    #print(docs_as_str)
     #print(type(docs_as_str))
-    #chunks = text_splitter.split_text(docs_as_str[0])  # chunked data ready to be vector embedded for storage
-    #print(chunks)
-    embeddings = BedrockEmbeddings(model_id='amazon.titan-embed-text-v1', client=br_runtime)  # create embedding object that uses AWS Bedrock API and calls Cohere Embed English model that creates vector representation of the chunks
+    #chunks = text_splitter.split_text(docs_as_str)  # chunked data ready to be vector embedded for storage
+    #print(chunks[0])
+    #[text.page_content for text in chunks]
+    #embeddings = BedrockEmbeddings(model_id='amazon.titan-embed-text-v1', client=br_runtime)  # create embedding object that uses AWS Bedrock API and calls Cohere Embed English model that creates vector representation of the chunks
+    embeddings = BedrockEmbeddings(model_id='amazon.titan-embed-text-v2:0', client=br_runtime) 
     #db = FAISS.from_texts(docs_as_str, embeddings)  # the embedinngs are created on text chunks and stored in Facebook AI similarity search vector db. FAISS provides faster data retrival and access
+    #embeddings = BedrockEmbeddings(model_id='amazon.titan-embed-text-v2:0', client=br_runtime) 
     db = FAISS.from_documents(chunks, embeddings)  # the embedinngs are created on text chunks and stored in Facebook AI similarity search vector db. FAISS provides faster data retrival and access
     db.save_local(DB_FAISS_PATH)  # saved the vector embeddings locally. IN FUTURE - should change to store in db (vectors should be created only when new data needs chunking) 
 
