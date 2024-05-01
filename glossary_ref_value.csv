@@ -1,0 +1,25 @@
+﻿Attribute Reg ID,Reference Value,Definition
+989705689,O,CashOutRefinance -The reference value is added for historical RDW data in AUT. Reference Value Code is 2.
+989705689,C,Construction - A short-term loan used to finance the building of a home or other real estate project and acquire the land (if applicable).
+989705689,E,"HomeEquityTakeout - A mortgage loan, usually in a subordinate position, in which the loan amount represents a percentage of the borrower's available equity in the subject property."
+989705689,I,"HomeImprovement - A mortgage that requires that funds are used to renovate, remodel, repair, or upgrade their existing home or a home that they are purchasing."
+989705689,L,LimitedCashOut - The reference value is added for historical RDW data in AUT. Reference Value Code is L.
+989705689,P,Purchase - A transaction through which the borrower obtains financing secured by a property to acquire an ownership interest in the property.
+989705689,Y,"Refinance - A transaction through which the borrower obtains financing secured by a property in which he/she has an ownership interest, typically paying off an existing lien and/or using the proceeds for other eligible purposes such as home improvement or debt consolidation."
+989705689,R,"ReverseMortgage - A type of mortgage in which certain homeowners (based on age restrictions) can borrow money against the equity of his or her home. No repayment of the mortgage (principal or interest) is required until the borrower dies, vacates the home as his/her primary residence or the home is sold."
+989707353,O,Occpied by unknown - A status reported by the listing broker/agent responsible for the marketing of the REO property when the assigned listing broker is unable to determine the occupancy of the REO property.
+989707353,P,"OwnerOccupied - (Primary Home)A status reported by the listing broker/agent responsible for the marketing of the REO property where the property is currently occupied by the owner / former mortgagor of the property or a parent, child, or spouse of the owner/former mortgagor."
+989707353,R,RemovedOrDestroyed - The property has been removed or destroyed.
+989707353,I,"TenantOccupied - (Investment) A status reported by the listing broker/agent responsible for the marketing of the REO property where the property is currently occupied by anyone who is not the owner, parent, child, or spouse of the owner / former mortgagor who is inhabiting an REO property."
+989708379,CO,"Condominium -A unit within a project for which an owner has title to his or her individual unit, an interest in the project's common areas, and, in some cases, the exclusive use of certain limited common areas. The unit may be attached or detached."
+989708379,FC,"Foreclosure -The termination of an owner's right to a property, usually due to default. Typically involves a forced sale of the property at public auction, with the proceeds being applied to the outstanding mortgage debt."
+989708379,PU,FourUnits -The loans within this category type are all secured by properties with four dwelling units.
+989708379,MH,"ManufacturedHousing -A dwelling unit built on a permanent chassis and attached to a permanent foundation system. Other factory-built housing (not built on a permanent chassis), such as modular, prefabricated, panelized, or sectional housing, is not considered manufactured housing. The manufactured home must be a one-unit dwelling that is legally classified as real property."
+989708379,MI,MI - The information related to property type is not available.
+989708379,SF,SingleFamily - A residential property containing one to four dwelling units.
+989708379,SU,SingleUnit - The loans within this category type are all secured by properties with one dwelling unit.
+989708379,CP,ThreeUnits - The loans within this category type are all secured by properties with three dwelling units.
+989708379,P,TwoUnits -The loans within this category type are all secured by properties with two dwelling units.The Collateral Group Category types are not mutually exclusive.
+989726098,C,Company - (Headquarters) - A code indicating the address is for a registered headquarters of a legal entity.
+989726098,R,Region - (Mailing) A code indicating the address is where an individual or legal entity receives letters or packages.
+989726098,B,Branch - (Other) A code indicating the address type value does not appear in the reference value list.
