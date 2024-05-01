@@ -104,7 +104,7 @@ def main():
         st.session_state['past'] = []
 
     # Create layout for different components
-    col1, gap, col3 = st.columns([50, 1, 30])
+    col1, gap, col3 = st.columns([50, 1, 40])
 
     # Static component
     with col1:
@@ -127,6 +127,7 @@ def main():
         tab1.subheader("Dataset Summary")
         df = pd.read_csv("data/dataset_metadata.csv")
         df = df[['Dataset Name', 'Table Name', 'Dataset Reg ID', 'Dataset Description']]
+        df["Role"] = "oasis_dbo_grp soasis-rs-01"
         df["show"] = False
         
         table = tab1.data_editor(
@@ -136,6 +137,10 @@ def main():
                     "Show Columns",
                     help = "Select to show the columns in this table",
                     default = False
+                ),
+                "Dataset Description": st.column_config.Column(
+                    "Description",
+                    width = "medium"
                 )
             },
             disabled = ['Dataset Name', 'Table Name', 'Dataset Reg ID', 'Dataset Description'],
@@ -146,7 +151,7 @@ def main():
         
         tab2.subheader("Column Summary")
         df2 = pd.read_csv("data/attribute_metadata.csv")
-        df2 = df2[['Physical Attribute Name', 'Logical Attribute Name', 'Description', 'Dataset Reg ID', 'DataType']]
+        df2 = df2[['Attribute Reg ID','Physical Attribute Name', 'Logical Attribute Name', 'Description', 'Dataset Reg ID', 'DataType']]
         
         col_df = selected_tables.merge(df2, on='Dataset Reg ID', how = 'left')
         col_df = col_df[['Table Name', 'Physical Attribute Name', 'Logical Attribute Name', 'Description', 'DataType']]
@@ -159,6 +164,10 @@ def main():
                     "Show Profile",
                     help = "Select to show the profile for this column",
                     default = False
+                ),
+                "Description": st.column_config.Column(
+                    "Description",
+                    width = "medium"
                 )
             },
             disabled = ['Table Name', 'Physical Attribute Name', 'Logical Attribute Name', 'Description', 'DataType'],
@@ -169,13 +178,46 @@ def main():
         prof_tables = table2.loc[table2['show'] == True]
         
         if prof_tables.shape[0] > 0:
-            selected = prof_tables.iloc[0]['Physical Attribute Name']
-            tab3.text(f"Showing profile information for column: {selected}")
+            attr_name = prof_tables.iloc[0]['Physical Attribute Name']
+            dset = selected_tables.iloc[0]['Dataset Reg ID']
+            lj = df2.loc[df2['Physical Attribute Name'] == attr_name]
+            lj = lj.loc[lj['Dataset Reg ID'] == dset]
+
+            profile = pd.read_csv("data/profile.csv")
+            profile = profile[['Dataset Reg ID', 'Profiled Attribute Name', 'Min Value', 'Max Value', 'Density']]
+            lj = lj.merge(profile, how="left", left_on=['Dataset Reg ID', 'Physical Attribute Name'], right_on=['Dataset Reg ID', 'Profiled Attribute Name'])
+
+            cat_freq_dist = pd.read_csv("data/categorised_freq_distribution.csv")
+            cat_freq_dist = cat_freq_dist[['Dataset Reg ID', 'Attribute Name', 'Attribute Category Value', 'Frequency_Count']]
+            
+            description = lj.iloc[0]['Description']
+            datatype = lj.iloc[0]['DataType']
+            min_val = lj.iloc[0]['Min Value']
+            max_val = lj.iloc[0]['Max Value']
+            density = lj.iloc[0]['Density']
+
+            tab3.text(f"Showing profile information for column: {attr_name}")
             tab3.text("")
-            tab3.text("Attribute Type: Continuous Number")
-            tab3.text("Minimum Value: 0")
-            tab3.text("Median Value: 500")
-            tab3.text("Maximum Value: 1000")    
+            tab3.text(f"Attribute Type: {datatype}")
+            tab3.text(f"Minimum Value: {min_val}")
+            tab3.text(f"Maximum Value: {max_val}")
+            tab3.text(f"Density: {density}")    
+            
+            #filtered_dist = cat_freq_dist.loc[cat_freq_dist['Attribute Name']==attr_name]
+            filtered_dist = lj.merge(cat_freq_dist, how="left", left_on=['Dataset Reg ID', 'Physical Attribute Name'], right_on=['Dataset Reg ID', 'Attribute Name'])
+
+            # Merge with the categorical descriptions
+            glossary_ref = pd.read_csv("data/glossary_ref_value.csv")
+            filtered_dist = filtered_dist.merge(glossary_ref, how="left", left_on=['Attribute Reg ID', 'Attribute Category Value'], right_on=['Attribute Reg ID', 'Reference Value'])
+            
+            if filtered_dist.shape[0] > 0:
+                tab3.text("Attribute Distributions:")  
+                filtered_dist['Frequency %'] = (filtered_dist['Frequency_Count'] / 9500) * 100
+                filtered_dist = filtered_dist[['Attribute Category Value', 'Frequency %', 'Definition']]
+                table3 = tab3.data_editor(
+                    filtered_dist,
+                    hide_index= True
+                )
             
     # Chatbot Component
     with col3:
