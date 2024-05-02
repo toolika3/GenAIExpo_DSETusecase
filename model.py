@@ -1,3 +1,6 @@
+#pip install langchain==0.1.6
+#pip install sqlalchemy==2.0.1
+
 import boto3  # AWS SDK for Python(integrate AWS services for Python)
 from langchain.prompts import PromptTemplate
 from langchain_community.embeddings import BedrockEmbeddings # To access Bedrock's Titan Text embedding model.BedrockEmbeddings uses AWS Bedrock API to generate embeddings for given text for saving to vectordb 
@@ -9,6 +12,10 @@ from streamlit_chat import message
 import pandas as pd  # to create a dataframe for displaying all models from Bedrock
 from streamlit_extras.add_vertical_space import add_vertical_space
 from streamlit_extras.app_logo import add_logo
+## Add Contexual compressor
+from langchain.retrievers import ContextualCompressionRetriever
+from langchain.retrievers.document_compressors import LLMChainExtractor
+from langchain.retrievers.document_compressors import EmbeddingsFilter
 
 st.set_page_config(
     layout="wide"
@@ -24,7 +31,8 @@ def initialize_model():
     aws_region = boto_session.region_name
     # runtime client to call Bedrock models
     br_runtime = boto_session.client(service_name='bedrock-runtime', region_name=aws_region)
-    embeddings = BedrockEmbeddings(model_id='amazon.titan-embed-text-v1', client=br_runtime)
+    #embeddings = BedrockEmbeddings(model_id='amazon.titan-embed-text-v1', client=br_runtime)
+    embeddings = BedrockEmbeddings(model_id='amazon.titan-embed-text-v2:0', client=br_runtime)
 
     #Loading the model
     def load_llm():
@@ -68,13 +76,24 @@ def initialize_model():
                                 input_variables=['context', 'question', 'chat_history'])
         return prompt
     
-    db = FAISS.load_local(DB_FAISS_PATH, embeddings, allow_dangerous_deserialization=True)
+    #db = FAISS.load_local(DB_FAISS_PATH, embeddings, allow_dangerous_deserialization=True)
+    db = FAISS.load_local(DB_FAISS_PATH, embeddings)
+    retriever = db.as_retriever(search_kwargs={'k':30})
     llm = load_llm()
+    #making the compressor
+    compressor = LLMChainExtractor.from_llm(llm=llm)
+    #compressor retriver = base retriever + compressor
+    #compression_retriever = ContextualCompressionRetriever(base_retriever=retriever,base_compressor=compressor)
+    embdeddings_filter = EmbeddingsFilter(embeddings=embeddings)
+    compression_retriever_filter = ContextualCompressionRetriever(base_retriever=retriever, base_compressor=embdeddings_filter)
+    
     prompt = set_custom_prompt()
     qa_chain = ConversationalRetrievalChain.from_llm(
         llm=llm,
         chain_type='stuff',
-        retriever=db.as_retriever(search_kwargs={'k':30}),
+        retriever=compression_retriever_filter,
+        verbose=True,
+        #retriever=db.as_retriever(search_kwargs={'k':30}),
         #retriever=db.as_retriever(search_type="mmr"),
         #retriever=db.as_retriever(search_type="similarity_score_threshold",search_kwargs={'score_threshold':0.1}),
         combine_docs_chain_kwargs={'prompt': prompt},
@@ -114,7 +133,7 @@ def main():
         with c1:
             st.image("images.png", width = 80)
         with c2:
-            st.title("FNMA AI Super Search Dictionary")
+            st.title("Micah - AI Super Search Assistant")
     
         # Application description
         st.write("View a wide range of data details and explore the depths of Fannie Mae data with AI powered super search technology!")
@@ -141,6 +160,10 @@ def main():
                 "Dataset Description": st.column_config.Column(
                     "Description",
                     width = "medium"
+                ),
+                "Role": st.column_config.Column(
+                    "Role",
+                    width = "small"
                 )
             },
             disabled = ['Dataset Name', 'Table Name', 'Dataset Reg ID', 'Dataset Description'],
