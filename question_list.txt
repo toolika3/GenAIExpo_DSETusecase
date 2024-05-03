@@ -1,14 +1,15 @@
 # Expo Questions
 
 1. Do you have tables associated to Fannie Mae Loan Performance. List the table name and DSETID.Use bullets
-2. Get me the DB Role required to access table associated with DSET000114
-3. List all attributes associated with UPB for the above table.Also, what is the primary difference between each one of them.summarise it
-4. Give me the complete metadata and profiling information on curr_upb for the DSET_ID listed above
-5. what does cardinality,selectivity and density values telling me in the above response
-6. Can you futher interpret the Domain taxanonomy based on business segment from above
-7. Get me the metadata information on channel attribute of fan_loan_perf table.
-8. Also include the frequency percent and description for each category and display the result in tabular format
+2. List all attributes associated with UPB for the above table.Also, what is the primary difference between each one of them.summarise it
+3. Give me the complete metadata and profiling information on curr_upb for the DSET_ID listed above
+4. what does cardinality,selectivity and density values telling me in the above response
+5. Get me the metadata information on channel attribute of fan_loan_perf table.
+6. Also include the frequency percent and description for each category and display the result in tabular format
 
+
+7. Get me the DB Role required to access table associated with DSET000114
+8. Can you futher interpret the Domain taxanonomy based on business segment from above
 
 
 
