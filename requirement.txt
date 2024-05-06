@@ -1,3 +1,7 @@
 streamlit
 streamlit_chat
-langchain_aws
+langchain==0.1.6
+langchain-aws==0.1.2
+langchain-community==0.0.20
+langchain-core==0.1.23
+sqlalchemy==2.0.1

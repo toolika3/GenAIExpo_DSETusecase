@@ -6,7 +6,7 @@ from langchain_community.document_loaders import DirectoryLoader  #langchain fun
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 
 # Global variables to access and save files on local system
-DATA_PATH = 'data/'
+DATA_PATH = 'data_tm/'
 DB_FAISS_PATH = 'vectorstore/db_faiss'
 
 

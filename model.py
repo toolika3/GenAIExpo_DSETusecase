@@ -21,6 +21,16 @@ st.set_page_config(
     layout="wide"
 )
 
+st.markdown(
+    """
+    <style>
+    [data-testid="stChatMessageContent"] p{
+        font-size:1.2rem;font-family:sans-serif;
+    }
+    </style>
+    """, unsafe_allow_html=True
+)
+
 @st.cache_resource
 def initialize_model():
 
@@ -44,7 +54,7 @@ def initialize_model():
         return llm
 
     custom_prompt_template = """
-        You are a Data Discovery AI assistance created by Fannie Mae.Your goal is to help users with data related questions. 
+        You are MICAH, a Data Discovery AI assistance created by Fannie Mae.Your goal is to help users with data related questions. 
         You should maintain a friendly customer service tone.
     
         Here are some important rules for the interaction:
@@ -117,10 +127,10 @@ def main():
         st.session_state['history'] = []
 
     if 'generated' not in st.session_state:
-        st.session_state['generated'] = []
+        st.session_state['generated'] = ["Hi, I am Micah, a Data Discovery AI assistant created by Fannie Mae!"]
 
     if 'past' not in st.session_state:
-        st.session_state['past'] = []
+        st.session_state['past'] = ["Hey there!"]
 
     # Create layout for different components
     col1, gap, col3 = st.columns([50, 1, 40])
@@ -133,7 +143,7 @@ def main():
         with c1:
             st.image("images.png", width = 80)
         with c2:
-            st.title("FNMA AI Super Search Dictionary")
+            st.title("Micah - AI Super Search Assistant")
     
         # Application description
         st.write("View a wide range of data details and explore the depths of Fannie Mae data with AI powered super search technology!")
