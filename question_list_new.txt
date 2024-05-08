@@ -1,0 +1,14 @@
+# Expo Questions
+
+1. Do you have tables associated to Fannie Mae Loan Performance. List the table name and DSETID.Use bullets
+2. List all attributes associated with UPB thats available in the table fan_loan_perf
+3. What is the primary difference for the attributes listed above.Summarise in single sentence
+4. Get me the DB Role required to access 'fan_loan_perf' table
+5. Give me the complete metadata and profiling information on curr_upb for table above
+6. Do you have any concern on using the curr_upb for analysis based on the profiling data provided above?
+7. Get me the frequency count, frequency percent and description for each category available in 'prop_type' attribute of fan_loan_perf table. Display the result in tabular format
+
+
+
+
+
