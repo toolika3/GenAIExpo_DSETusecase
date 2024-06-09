@@ -1,12 +1,13 @@
 # Expo Questions
 
-1. Do you have tables associated to Fannie Mae Loan Performance. List the table name and DSETID.Use bullets
-2. List all attributes associated with UPB thats available in the table fan_loan_perf
-3. What is the primary difference for the attributes listed above.Summarise in single sentence
-4. Get me the DB Role required to access 'fan_loan_perf' table
-5. Give me the complete metadata and profiling information on curr_upb for table above
-6. Do you have any concern on using the curr_upb for analysis based on the profiling data provided above?
-7. Get me the frequency count, frequency percent and description for each category available in 'prop_type' attribute of fan_loan_perf table. Display the result in tabular format
+1. I would like to do an analysis on Fannie Mae Loan Performance data. Do you have tables associated to Fannie Mae Loan Performance that I can use for my analysis? List the table name and DSETID. Use bullets
+2. Please list all attributes associated with unpaid principal balance in the table fan_loan_perf.
+3. What is the primary difference between the unpaid principal balance attribute listed above?Please summarize in single sentence. Then tell me which unpaid principal balance attribute I should use if I want the most up to date unpaid principal balance associated with a loan?
+4. Can you please visualise the association between different unpaid principal balance attributes listed above in a graph?
+4. I dont have access to this table. Can you get me the DB Role required to access the 'fan_loan_perf' table?
+5. Do you have any information on the metadata and profile of the 'curr_upb' attribute? Summary statistics would be helpful for me to understand this attribute better
+6. Do you have any concerns about using the curr_upb attribute for the analysis based on the the profiling data provided above?
+7. I would like to see the different categories and their frequencies for the 'prop_type' attribute in the fan_loan_perf table. Please get me the frequency count, frequency percent and description for each category available in 'prop_type' attribute. Display the result in tabular format
 
 
 
